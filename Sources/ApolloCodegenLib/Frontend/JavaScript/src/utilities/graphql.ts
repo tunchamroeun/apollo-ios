@@ -21,7 +21,7 @@ import {
 } from "graphql";
 import { isNode } from "graphql/language/ast";
 import { validateSDL } from "graphql/validation/validate";
-import { directive_apollo_client_ios_localCacheMutation } from "./apolloCodegenSchemaExtension";
+import { directive_apollo_client_ios_localCacheMutation, directive_apollo_client_ios_mutable } from "./apolloCodegenSchemaExtension";
 import { addTypeNameFieldForLegacySafelisting } from "./legacySafelistingTransform";
 
 export class GraphQLSchemaValidationError extends Error {
@@ -121,7 +121,7 @@ function transformTypenameFieldIfNeeded(node: FieldNode): FieldNode {
 }
 
 function stripLocalCacheMutationCustomClientDirective(node: DirectiveNode): DirectiveNode | null {
-  return (node.name.value == directive_apollo_client_ios_localCacheMutation.name.value) ? null : node;
+  return (node.name.value == directive_apollo_client_ios_localCacheMutation.name.value || node.name.value == directive_apollo_client_ios_mutable.name.value) ? null : node;
 }
 
 // Utility functions extracted from graphql-js

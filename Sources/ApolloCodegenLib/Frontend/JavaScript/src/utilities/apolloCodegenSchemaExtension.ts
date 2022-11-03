@@ -8,6 +8,14 @@ export const directive_apollo_client_ios_localCacheMutation: DirectiveDefinition
   locations: [nameNode("QUERY"), nameNode("MUTATION"), nameNode("SUBSCRIPTION"), nameNode("FRAGMENT_DEFINITION")]
 }
 
+export const directive_apollo_client_ios_mutable: DirectiveDefinitionNode = {
+  kind: Kind.DIRECTIVE_DEFINITION,
+  description: stringNode("A directive used by the Apollo iOS client to annotate operations or fragments that should be used exclusively for generating local cache mutations instead of as standard operations."),
+  name: nameNode("apollo_client_ios_mutable"),
+  repeatable: false,
+  locations: [nameNode("QUERY"), nameNode("MUTATION"), nameNode("SUBSCRIPTION"), nameNode("FRAGMENT_DEFINITION")]
+}
+
 function nameNode(name :string): NameNode {
   return {
     kind: Kind.NAME,
@@ -25,14 +33,16 @@ function stringNode(value :string): StringValueNode {
 export const apolloCodegenSchemaExtension: DocumentNode = {
   kind: Kind.DOCUMENT,
   definitions: [
-    directive_apollo_client_ios_localCacheMutation
+    directive_apollo_client_ios_localCacheMutation,
+    directive_apollo_client_ios_mutable
   ]
 }
 
 export function addApolloCodegenSchemaExtensionToDocument(document: DocumentNode): DocumentNode {
   return document.definitions.some(definition => 
     definition.kind == Kind.DIRECTIVE_DEFINITION && 
-    definition.name.value == directive_apollo_client_ios_localCacheMutation.name.value
+    (definition.name.value == directive_apollo_client_ios_localCacheMutation.name.value ||
+    definition.name.value == directive_apollo_client_ios_mutable.name.value)
   ) ?
     document :
     concatAST([document, apolloCodegenSchemaExtension])
