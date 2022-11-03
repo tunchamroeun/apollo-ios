@@ -30,7 +30,7 @@ struct OperationDefinitionTemplate: OperationTemplateRenderer {
 
       \(section: VariableAccessors(operation.definition.variables))
 
-      \(SelectionSetTemplate(schema: schema, config: config).render(for: operation))
+      \(operation.definition.isMutable ? MutableSelectionSetTemplate(schema: schema, mutable: true, config: config).render(for: operation) : SelectionSetTemplate(schema: schema, config: config).render(for: operation))
     }
 
     """)
