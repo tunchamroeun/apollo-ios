@@ -39,6 +39,8 @@ struct SwiftPackageManagerModuleTemplate: TemplateRenderer {
           name: "\(casedSchemaName)",
           dependencies: [
             .product(name: "ApolloAPI", package: "apollo-ios"),
+            .product(name: "Apollo", package: "apollo-ios"),
+            .product(name: "ApolloWebSocket", package: "apollo-ios"),
           ],
           path: "./Sources"
         ),
