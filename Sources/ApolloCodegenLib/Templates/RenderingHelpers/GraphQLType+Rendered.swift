@@ -151,14 +151,14 @@ extension GraphQLType {
 
     case .enum, .scalar, .inputObject:
       let typeName = self.renderedAsSelectionSetField(containedInNonNull: true, config: config)
-      return inNullable ? "\(typeName)" : typeName
+      return inNullable ? "\(typeName)?" : typeName
 
     case let .nonNull(ofType):
       return ofType.renderAsInputValue(inNullable: false, config: config)
 
     case let .list(ofType):
       let typeName = "[\(ofType.renderedAsSelectionSetField(containedInNonNull: false, config: config))]"
-      return inNullable ? "\(typeName)" : typeName
+      return inNullable ? "\(typeName)?" : typeName
     }
   }
 }
