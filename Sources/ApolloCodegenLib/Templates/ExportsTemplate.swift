@@ -16,9 +16,7 @@ struct ExportsTemplate: TemplateRenderer {
 
   var template: TemplateString {
     """
-    @_exported import Apollo
     @_exported import ApolloAPI
-    @_exported import ApolloWebSocket
     """
   }
 }
