@@ -100,6 +100,7 @@ extension TemplateRenderer {
     return TemplateString(
     """
     \(ifLet: headerTemplate, { "\($0)\n" })
+    \(ImportStatementTemplate.SchemaType.template(for: config))
     
     \(ifLet: detachedTemplate, { "\($0)\n" })
     \(ifLet: namespace, template.wrappedInNamespace(_:), else: template)
@@ -192,7 +193,7 @@ struct ImportStatementTemplate {
     static func template(
       for config: ApolloCodegen.ConfigurationContext
     ) -> String {
-        ""
+        "import \(config.ApolloAPITargetName)"
     }
   }
 
@@ -201,6 +202,7 @@ struct ImportStatementTemplate {
       for config: ApolloCodegen.ConfigurationContext
     ) -> TemplateString {
       return """
+      import \(config.ApolloAPITargetName)
       \(if: config.output.operations != .inSchemaModule, "import \(config.schemaModuleName)")
       """
     }
