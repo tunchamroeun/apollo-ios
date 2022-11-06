@@ -354,9 +354,9 @@ import OrderedCollections
             try SchemaConfigurationFileGenerator(schema: ir.schema, config: config)
                 .generate(forConfig: config, fileManager: fileManager)
 
-            try ExportsFileGenerator.generate(config, fileManager: fileManager)
+//            try ExportsFileGenerator.generate(config, fileManager: fileManager)
 
-            try SchemaModuleFileGenerator.generate(config, fileManager: fileManager)
+//            try SchemaModuleFileGenerator.generate(config, fileManager: fileManager)
         }
 
         private static func findExistingGeneratedFilePaths(
