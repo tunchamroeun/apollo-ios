@@ -576,12 +576,18 @@ struct MutableSelectionSetTemplate {
       default: return true
       }
     }
+    var isNullableList: Bool {
+      switch field.type {
+        case .list: return true
+        default: return false
+      }
+    }
     if case .nonNull = field.type, forceOptional {
       return "\(fieldName)?"
     } else {
       return """
         \(fieldName)\
-        \(isNullable ? " = nil" : "")
+        \(isNullable ? " = \(isNullableList ? "[]" : "nil")" : "")
         """
     }
   }
