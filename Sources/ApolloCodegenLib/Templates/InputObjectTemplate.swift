@@ -20,7 +20,7 @@ struct InputObjectTemplate: TemplateRenderer {
     \(documentation: graphqlInputObject.documentation, config: config)
     \(embeddedAccessControlModifier)\
     struct \(graphqlInputObject.name.firstUppercased): InputObject {
-      public private(set) var __data: InputDict
+      public var __data: InputDict
     
       public init(_ data: InputDict) {
         __data = data
