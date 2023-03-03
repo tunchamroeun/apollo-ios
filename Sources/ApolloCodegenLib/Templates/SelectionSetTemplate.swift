@@ -69,7 +69,7 @@ struct SelectionSetTemplate {
       selectionSetTypeName = "MutableInlineFragment"
     }
 
-    return "\(config.schemaName.firstUppercased).\(selectionSetTypeName)"
+    return "\(selectionSetTypeName)"
   }
 
   // MARK: - Selection Set Name Documentation
@@ -119,7 +119,7 @@ struct SelectionSetTemplate {
   private func ParentTypeTemplate(_ type: GraphQLCompositeType) -> String {
     """
     public static var __parentType: ParentType { \
-    \(config.schemaName.firstUppercased).\(type.schemaTypesNamespace).\(type.name.firstUppercased) }
+    \(type.schemaTypesNamespace).\(type.name.firstUppercased) }
     """
   }
 
@@ -482,7 +482,7 @@ struct MutableSelectionSetTemplate {
       selectionSetTypeName = "MutableInlineFragment"
     }
 
-    return "\(config.schemaName.firstUppercased).\(selectionSetTypeName)"
+    return "\(selectionSetTypeName)"
   }
 
   // MARK: - Selection Set Name Documentation
@@ -595,7 +595,7 @@ struct MutableSelectionSetTemplate {
   private func ParentTypeTemplate(_ type: GraphQLCompositeType) -> String {
     """
     public static var __parentType: ParentType { \
-    \(config.schemaName.firstUppercased).\(type.schemaTypesNamespace).\(type.name.firstUppercased) }
+    \(type.schemaTypesNamespace).\(type.name.firstUppercased) }
     """
   }
 

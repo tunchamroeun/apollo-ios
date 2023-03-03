@@ -46,7 +46,7 @@ extension GraphQLType {
   ) -> String {
 
     lazy var schemaModuleName: String = {
-      !config.output.operations.isInModule ? "\(config.schemaName.firstUppercased)." : ""
+      !config.output.operations.isInModule ? "" : ""
     }()
 
     switch self {
@@ -99,7 +99,7 @@ extension GraphQLType {
   ) -> String {
 
     lazy var schemaModuleName: String = {
-      !config.output.schemaTypes.isInModule ? "\(config.schemaName.firstUppercased)." : ""
+      !config.output.schemaTypes.isInModule ? "" : ""
     }()
 
     switch self {

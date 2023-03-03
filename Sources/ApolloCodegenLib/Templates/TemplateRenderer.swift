@@ -93,7 +93,7 @@ extension TemplateRenderer {
       case let (false, .some(schemaTypeNamespace)):
         return schemaTypeNamespace
       case let (true, .some(schemaTypeNamespace)):
-        return "\(config.schemaName.firstUppercased).\(schemaTypeNamespace)"
+        return "\(schemaTypeNamespace)"
       }
     }()
 
